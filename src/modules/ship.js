@@ -1,8 +1,10 @@
-const shipFactory = (name, length) => {
+const Ship = (name, length) => {
   const shipName = name;
   const shipLength = length;
+  const hit = () => false;
+  const isSunk = () => false;
 
-  return { shipName, shipLength };
+  return { shipName, shipLength, hit, isSunk };
 };
 
-export default shipFactory;
+export default Ship;

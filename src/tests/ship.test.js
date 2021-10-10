@@ -1,11 +1,8 @@
-import shipFactory from '../modules/ship';
+import Ship from '../modules/Ship';
 
 test('create destroyer', () => {
-  const destroyer = shipFactory('destroyer', 6);
-  expect(destroyer).toStrictEqual({
-    shipName: 'destroyer',
-    shipLength: 6,
-  });
+  const destroyer = Ship('destroyer', 6);
+  expect(destroyer.isSunk()).toBe(false);
 });
 
 // test.only('hit battleship', () => {
