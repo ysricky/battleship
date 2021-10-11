@@ -1,8 +1,11 @@
 import Ship from '../modules/Ship';
 
-test('create destroyer', () => {
-  const destroyer = Ship('destroyer', 6);
-  expect(destroyer.isSunk()).toBe(false);
+test('check if ship is sunk', () => {
+  const destroyer = Ship(3);
+  destroyer.hit(0);
+  destroyer.hit(1);
+  destroyer.hit(2);
+  expect(destroyer.isSunk()).toBe(true);
 });
 
 // test.only('hit battleship', () => {

@@ -1,10 +1,14 @@
-const Ship = (name, length) => {
-  const shipName = name;
-  const shipLength = length;
-  const hit = () => false;
-  const isSunk = () => false;
+const Ship = (length) => {
+  const damagedPart = new Array(length).fill(false);
+  const hit = (pos) => {
+    damagedPart[pos] = true;
+  };
+  const isSunk = () => {
+    const sunk = damagedPart.reduce((prev, next) => prev && next, true);
+    return sunk;
+  };
 
-  return { shipName, shipLength, hit, isSunk };
+  return { hit, isSunk };
 };
 
 export default Ship;
