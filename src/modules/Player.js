@@ -1,6 +1,8 @@
-const Player = (name) => {
-  const getName = () => name;
-  return { getName };
+const Player = () => {
+  const attackEnemyBoard = (enemyBoard, coordinate) => {
+    enemyBoard.receiveAttack(coordinate);
+  };
+  return { attackEnemyBoard };
 };
 
 export default Player;

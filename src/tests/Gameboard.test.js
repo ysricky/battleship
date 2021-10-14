@@ -3,7 +3,7 @@ import Gameboard from '../modules/gameboard';
 describe('record shot', () => {
   const mockPlayerBoard = Gameboard();
   mockPlayerBoard.placeShip([0, 1]);
-  mockPlayerBoard.placeShip([3, 4, 5]);
+  // mockPlayerBoard.placeShip([3, 4, 5]);
 
   test('check board', () => {
     expect(mockPlayerBoard.board).toMatchObject([
@@ -12,7 +12,7 @@ describe('record shot', () => {
       null,
     ]);
   });
-  test('missed shot', () => {
+  test.only('missed shot', () => {
     expect(mockPlayerBoard.receiveAttack(2)).toBe('missed');
   });
   test('accurate shot', () => {
@@ -33,7 +33,7 @@ describe('record shot', () => {
       { isMissed: true },
     ]);
   });
-  test.only('check if entire fleet was defeated', () => {
+  test('check if entire fleet was defeated', () => {
     expect(mockPlayerBoard.isFleetSunk()).toBe(false);
   });
 });
