@@ -1,10 +1,12 @@
 const Ship = (length) => {
-  const damagedPart = new Array(length).fill(false);
+  const shipBody = new Array(length).fill(false);
+
   const hit = (pos) => {
-    damagedPart[pos] = true;
+    shipBody[pos] = true;
   };
+
   const isSunk = () => {
-    const sunk = damagedPart.reduce((prev, next) => prev && next, true);
+    const sunk = shipBody.reduce((prev, next) => prev && next, true);
     return sunk;
   };
 
