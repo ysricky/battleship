@@ -1,4 +1,4 @@
-import Player from '../modules/Player';
+import Player from '../modules/player';
 
 test('return player name', () => {
   const playerOne = Player('Ricky');

@@ -1,4 +1,4 @@
-import Gameboard from '../modules/Gameboard';
+import Gameboard from '../modules/gameboard';
 
 describe('record shot', () => {
   const playerBoard = Gameboard();

@@ -1,26 +1,17 @@
-import Ship from '../modules/Ship';
-
-const carrier = Ship(5);
-const patrol = Ship(2);
-
-carrier.hit(2);
-patrol.hit(0);
-patrol.hit(1);
+import Ship from '../modules/ship';
 
 describe('check ship condition', () => {
+  const mockCarrier = Ship(5);
+  const mockPatrol = Ship(2);
+
+  mockCarrier.hit(2);
+  mockPatrol.hit(0);
+  mockPatrol.hit(1);
+
   test('is getting single hit', () => {
-    expect(carrier.isSunk()).toBe(false);
+    expect(mockCarrier.isSunk()).toBe(false);
   });
   test('is getting multiple hits', () => {
-    expect(patrol.isSunk()).toBe(true);
-  });
-});
-
-describe('check ship direction', () => {
-  test('direction horizontal', () => {
-    expect(carrier.shipDirection[0]).toStrictEqual([0, 1, 2, 3, 4]);
-  });
-  test('direction vertical', () => {
-    expect(carrier.shipDirection[1]).toStrictEqual([0, 10, 20, 30, 40]);
+    expect(mockPatrol.isSunk()).toBe(true);
   });
 });

@@ -1,12 +1,12 @@
 const Ship = (length) => {
-  const shipBody = new Array(length).fill(false);
+  const shipBody = Array(length).fill('safe');
 
-  const hit = (pos) => {
-    shipBody[pos] = true;
+  const hit = (position) => {
+    shipBody[position] = 'hit';
   };
 
   const isSunk = () => {
-    const sunk = shipBody.reduce((prev, next) => prev && next, true);
+    const sunk = shipBody.every((part) => part === 'hit');
     return sunk;
   };
 
