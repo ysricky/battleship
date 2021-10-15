@@ -19,4 +19,7 @@ describe('attack enemy board', () => {
     player.attackEnemyBoard(computerBoard, 2);
     expect(computerBoard.isFleetSunk()).toBe(false);
   });
+  test('random legal move', () => {
+    expect(player.randomAttack(computerBoard)).toMatchObject([3, 4, 5]);
+  });
 });

@@ -31,7 +31,7 @@ const Gameboard = () => {
     return wipedOut;
   };
 
-  return { placeShip, receiveAttack, isFleetSunk };
+  return { board, placeShip, receiveAttack, isFleetSunk };
 };
 
 export default Gameboard;
