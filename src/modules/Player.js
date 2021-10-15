@@ -1,7 +1,6 @@
 const Player = () => {
-  const attackEnemyBoard = (enemyBoard, coordinate) => {
+  const attack = (enemyBoard, coordinate) =>
     enemyBoard.receiveAttack(coordinate);
-  };
 
   const randomAttack = (enemyBoard) => {
     const legalMove = enemyBoard.board.reduce((objArr, obj, index) => {
@@ -10,10 +9,10 @@ const Player = () => {
     }, []);
 
     const randomMove = Math.floor(Math.random() * legalMove.length);
-    enemyBoard.receiveAttack(legalMove[randomMove]);
+    return enemyBoard.receiveAttack(legalMove[randomMove]);
   };
 
-  return { attackEnemyBoard, randomAttack };
+  return { attack, randomAttack };
 };
 
 export default Player;

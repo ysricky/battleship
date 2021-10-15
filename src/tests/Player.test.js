@@ -1,25 +1,39 @@
 import Player from '../modules/player';
 import Gameboard from '../modules/gameboard';
 
-describe('attack enemy board', () => {
-  const computerBoard = Gameboard();
-  const player = Player();
-  computerBoard.placeShip([0, 1, 2]);
-  computerBoard.placeShip([3, 4, 5]);
+const humanBoard = Gameboard();
+const computerPlayer = Player();
 
-  test.only('first attack', () => {
-    player.attackEnemyBoard(computerBoard, 0);
-    expect(computerBoard.isWipedOut()).toBe(false);
+humanBoard.placeShip([1, 2, 3, 4, 5]);
+
+describe('manually attacking enemy board', () => {
+  test('missed atack', () => {
+    expect(computerPlayer.attack(humanBoard, 0)).toBe('missed');
   });
-  test('second attack', () => {
-    player.attackEnemyBoard(computerBoard, 1);
-    expect(computerBoard.isWipedOut()).toBe(false);
-  });
-  test('third attack', () => {
-    player.attackEnemyBoard(computerBoard, 2);
-    expect(computerBoard.isWipedOut()).toBe(false);
-  });
-  test('random legal move', () => {
-    expect(player.randomAttack(computerBoard)).toMatchObject([3, 4, 5]);
+  test('accurate attack', () => {
+    expect(computerPlayer.attack(humanBoard, 5)).toBe('hit');
   });
 });
+
+test('check if ship is still available', () => {
+  expect(humanBoard.isWipedOut()).toBe(false);
+});
+
+describe('randomly attacking legal spot', () => {
+  test('first random attack', () => {
+    expect(typeof computerPlayer.randomAttack(humanBoard)).toBe('string');
+  });
+  test('second random attack', () => {
+    expect(typeof computerPlayer.randomAttack(humanBoard)).toBe('string');
+  });
+  test('third random attack', () => {
+    expect(typeof computerPlayer.randomAttack(humanBoard)).toBe('string');
+  });
+  test('fourth random attack', () => {
+    expect(typeof computerPlayer.randomAttack(humanBoard)).toBe('string');
+  });
+});
+
+// test('all ship wiped out', () => {
+//   expect(humanBoard.isWipedOut()).toBe(true);
+// });

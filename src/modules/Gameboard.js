@@ -32,7 +32,7 @@ const Gameboard = () => {
     return wipedOut;
   };
 
-  return { placeShip, receiveAttack, isWipedOut };
+  return { board, placeShip, receiveAttack, isWipedOut };
 };
 
 export default Gameboard;
