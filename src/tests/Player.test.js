@@ -9,15 +9,15 @@ describe('attack enemy board', () => {
 
   test.only('first attack', () => {
     player.attackEnemyBoard(computerBoard, 0);
-    expect(computerBoard.isFleetSunk()).toBe(false);
+    expect(computerBoard.isWipedOut()).toBe(false);
   });
   test('second attack', () => {
     player.attackEnemyBoard(computerBoard, 1);
-    expect(computerBoard.isFleetSunk()).toBe(false);
+    expect(computerBoard.isWipedOut()).toBe(false);
   });
   test('third attack', () => {
     player.attackEnemyBoard(computerBoard, 2);
-    expect(computerBoard.isFleetSunk()).toBe(false);
+    expect(computerBoard.isWipedOut()).toBe(false);
   });
   test('random legal move', () => {
     expect(player.randomAttack(computerBoard)).toMatchObject([3, 4, 5]);

@@ -1,7 +1,7 @@
 import Ship from './ship';
 
 const Gameboard = () => {
-  const board = Array(6).fill(null);
+  const board = Array(100).fill(null);
   const fleet = [];
 
   const placeShip = (coordinates) => {
@@ -14,6 +14,7 @@ const Gameboard = () => {
         isHit: false,
       };
     });
+    return board;
   };
 
   const receiveAttack = (coordinate) => {
@@ -26,12 +27,12 @@ const Gameboard = () => {
     return 'hit';
   };
 
-  const isFleetSunk = () => {
+  const isWipedOut = () => {
     const wipedOut = fleet.every((ship) => ship.isSunk());
     return wipedOut;
   };
 
-  return { board, placeShip, receiveAttack, isFleetSunk };
+  return { placeShip, receiveAttack, isWipedOut };
 };
 
 export default Gameboard;

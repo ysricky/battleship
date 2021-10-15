@@ -1,39 +1,35 @@
 import Gameboard from '../modules/gameboard';
 
-describe('record shot', () => {
-  const mockPlayerBoard = Gameboard();
-  mockPlayerBoard.placeShip([0, 1]);
-  // mockPlayerBoard.placeShip([3, 4, 5]);
+const playerBoard = Gameboard();
 
-  test('check board', () => {
-    expect(mockPlayerBoard.board).toMatchObject([
-      { id: 0, part: 0, isHit: false },
-      { id: 0, part: 1, isHit: false },
-      null,
-    ]);
+describe('check board composition', () => {
+  test('after deploy one ship', () => {
+    expect(playerBoard.placeShip([0, 1, 2])[0].id).toBe(0);
   });
-  test.only('missed shot', () => {
-    expect(mockPlayerBoard.receiveAttack(2)).toBe('missed');
+  test('after deply two ships', () => {
+    expect(playerBoard.placeShip([10, 20, 30])[30].part).toBe(2);
   });
-  test('accurate shot', () => {
-    expect(mockPlayerBoard.receiveAttack(1)).toBe('hit');
+});
+
+describe('receiving attack', () => {
+  test('missed attack', () => {
+    expect(playerBoard.receiveAttack(3)).toBe('missed');
   });
-  test('check if ship is sunk', () => {
-    mockPlayerBoard.receiveAttack(0);
-    expect(mockPlayerBoard.fleet[0].isSunk()).toBe(true);
+  test('accurate attack', () => {
+    expect(playerBoard.receiveAttack(1)).toBe('hit');
   });
-  test('check board object after attack', () => {
-    expect(mockPlayerBoard.board).toMatchObject([
-      {
-        id: 0,
-        part: 0,
-        isHit: true,
-      },
-      { id: 0, part: 1, isHit: true },
-      { isMissed: true },
-    ]);
+});
+
+describe('fleet is wiped out', () => {
+  test(' after receive partial attack', () => {
+    playerBoard.receiveAttack(0);
+    playerBoard.receiveAttack(2);
+    expect(playerBoard.isWipedOut()).toBe(false);
   });
-  test('check if entire fleet was defeated', () => {
-    expect(mockPlayerBoard.isFleetSunk()).toBe(false);
+  test('after receive full attack', () => {
+    playerBoard.receiveAttack(10);
+    playerBoard.receiveAttack(20);
+    playerBoard.receiveAttack(30);
+    expect(playerBoard.isWipedOut()).toBe(true);
   });
 });
