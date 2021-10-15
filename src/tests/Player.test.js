@@ -7,7 +7,7 @@ describe('attack enemy board', () => {
   computerBoard.placeShip([0, 1, 2]);
   computerBoard.placeShip([3, 4, 5]);
 
-  test('first attack', () => {
+  test.only('first attack', () => {
     player.attackEnemyBoard(computerBoard, 0);
     expect(computerBoard.isFleetSunk()).toBe(false);
   });
