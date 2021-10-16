@@ -33,7 +33,3 @@ describe('randomly attacking legal spot', () => {
     expect(typeof computerPlayer.randomAttack(humanBoard)).toBe('string');
   });
 });
-
-// test('all ship wiped out', () => {
-//   expect(humanBoard.isWipedOut()).toBe(true);
-// });
